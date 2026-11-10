@@ -1,0 +1,4 @@
+uploads/diretores/*
+!uploads/diretores/.gitkeep
+uploads/filmes/*
+!uploads/filmes/.gitkeep
