@@ -9,8 +9,8 @@ $erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     validar_csrf();
 
-    $usuario = trim($_POST['usuario'] ?? '');
-    $senha = $_POST['senha'] ?? '';
+    $usuario = is_string($_POST['usuario'] ?? null) ? trim($_POST['usuario']) : '';
+    $senha = is_string($_POST['senha'] ?? null) ? $_POST['senha'] : '';
 
     $stmt = $conexao->prepare('SELECT id, usuario, senha FROM usuarios WHERE usuario = ? LIMIT 1');
     $stmt->bind_param('s', $usuario);
@@ -61,16 +61,20 @@ $pageTitle = 'Entrar';
         <form method="post">
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
 
-            <label>Usuário</label>
-            <input type="text" name="usuario" required maxlength="60" autocomplete="username">
+            <label for="usuario">Usuário</label>
+            <input id="usuario" type="text" name="usuario" required maxlength="60" autocomplete="username">
 
-            <label>Senha</label>
-            <input type="password" name="senha" required autocomplete="current-password">
+            <label for="senha">Senha</label>
+            <div class="password-field">
+                <input id="senha" type="password" name="senha" required autocomplete="current-password">
+                <button class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false" hidden>Mostrar</button>
+            </div>
 
             <button class="btn btn-primary btn-full" type="submit">Entrar</button>
         </form>
 
-        <p class="login-help">Primeiro acesso? Execute <strong>criar_admin.php</strong> uma vez.</p>
+        <p class="login-help">Ainda não tem uma conta? <a href="<?= e(url('cadastro.php')) ?>">Cadastre-se</a>.</p>
     </section>
+    <script src="<?= e(url('assets/js/password-toggle.js')) ?>" defer></script>
 </body>
 </html>
