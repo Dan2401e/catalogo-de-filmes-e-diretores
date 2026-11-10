@@ -1,0 +1,377 @@
+
+/* =====================================
+   CONFIGURAÇÕES GERAIS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #10101b;
+    color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+/* =====================================
+   CABEÇALHO
+===================================== */
+
+.cabecalho {
+    background: #191929;
+    padding: 22px 0;
+    border-bottom: 1px solid #30304a;
+}
+
+.cabecalho .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecalho h1 {
+    color: #a78bfa;
+    font-size: 25px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #a78bfa;
+}
+
+
+/* =====================================
+   BANNER INICIAL
+===================================== */
+
+.banner {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #242044, #111827);
+}
+
+.banner-conteudo {
+    max-width: 700px;
+}
+
+.banner h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #c4b5fd;
+}
+
+.banner p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #d1d5db;
+}
+
+
+/* =====================================
+   BOTÕES
+===================================== */
+
+.botao,
+.botao-secundario {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.botao {
+    background: #7c3aed;
+    color: white;
+}
+
+.botao:hover {
+    background: #6d28d9;
+    transform: translateY(-2px);
+}
+
+.botao-secundario {
+    background: #33334b;
+    color: white;
+}
+
+.botao-secundario:hover {
+    background: #454562;
+}
+
+
+/* =====================================
+   TÍTULO DA PÁGINA
+===================================== */
+
+.titulo-pagina {
+    text-align: center;
+    margin: 45px 0 30px;
+}
+
+.titulo-pagina h2 {
+    color: #c4b5fd;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.titulo-pagina p {
+    color: #b0b0c5;
+}
+
+
+/* =====================================
+   FILTROS E PESQUISA
+===================================== */
+
+.filtros {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.filtros input,
+.filtros select {
+    flex: 1;
+    min-width: 180px;
+    padding: 14px;
+    border: 1px solid #393953;
+    border-radius: 8px;
+    background: #1d1d30;
+    color: white;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+    outline: none;
+    border-color: #8b5cf6;
+}
+
+
+/* =====================================
+   GRADE DE FILMES
+===================================== */
+
+.grade-filmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+
+/* =====================================
+   CARTÕES DOS FILMES
+===================================== */
+
+.card-filme {
+    background: #1c1c2e;
+    border: 1px solid #34344c;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card-filme:hover {
+    transform: translateY(-5px);
+    border-color: #8b5cf6;
+}
+
+
+/* =====================================
+   CAPAS DOS FILMES
+===================================== */
+
+.capa-filme {
+    width: 100%;
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #312e81, #581c87);
+}
+
+.capa-filme img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Interestelar: mostra a imagem inteira */
+
+.capa-filme img[src*="interestelar"] {
+    object-fit: contain;
+    background: #10101b;
+}
+
+/* Imagem alternativa quando não existe capa */
+
+.capa-filme span {
+    font-size: 65px;
+}
+
+
+/* =====================================
+   INFORMAÇÕES DOS FILMES
+===================================== */
+
+.info-filme {
+    padding: 20px;
+}
+
+.info-filme h3 {
+    color: #c4b5fd;
+    margin-bottom: 15px;
+}
+
+.info-filme p {
+    color: #c0c0d0;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.info-filme .botao {
+    margin-top: 12px;
+}
+
+
+/* =====================================
+   DETALHES DO FILME
+===================================== */
+
+.detalhes-filme {
+    display: flex;
+    gap: 35px;
+    margin: 60px 0;
+    background: #1c1c2e;
+    border-radius: 15px;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.capa-detalhes {
+    width: 250px;
+    height: 370px;
+    background: linear-gradient(135deg, #312e81, #581c87);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 90px;
+}
+
+.capa-detalhes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.info-detalhes {
+    flex: 1;
+}
+
+.info-detalhes h2 {
+    color: #c4b5fd;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+.info-detalhes p {
+    margin-bottom: 18px;
+    color: #d1d5db;
+}
+
+.info-detalhes .botao {
+    margin-top: 15px;
+}
+
+
+/* =====================================
+   MENSAGEM VAZIA
+===================================== */
+
+.mensagem-vazia {
+    text-align: center;
+    color: #c4b5fd;
+    margin: 50px 0;
+}
+
+
+/* =====================================
+   RODAPÉ
+===================================== */
+
+footer {
+    background: #191929;
+    text-align: center;
+    padding: 25px;
+    color: #a0a0b5;
+    margin-top: 50px;
+}
+
+
+/* =====================================
+   RESPONSIVIDADE
+===================================== */
+
+@media (max-width: 600px) {
+
+    .cabecalho .container {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .banner h2 {
+        font-size: 30px;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    .grade-filmes {
+        grid-template-columns: 1fr;
+    }
+
+    .detalhes-filme {
+        flex-direction: column;
+    }
+
+    .capa-detalhes {
+        width: 100%;
+        max-width: 300px;
+    }
+
+}
