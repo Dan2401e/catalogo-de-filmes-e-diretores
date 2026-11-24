@@ -63,6 +63,22 @@ CREATE TABLE IF NOT EXISTS tmdb_cache (
   INDEX idx_tmdb_cache_expira (expira_em)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS oauth_accounts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  provider VARCHAR(20) NOT NULL,
+  provider_user_id VARCHAR(191) COLLATE utf8mb4_bin NOT NULL,
+  email VARCHAR(254) DEFAULT NULL,
+  display_name VARCHAR(120) DEFAULT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT uq_oauth_provider_identity UNIQUE (provider, provider_user_id),
+  CONSTRAINT fk_oauth_accounts_usuario
+    FOREIGN KEY (user_id) REFERENCES usuarios(id)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  INDEX idx_oauth_accounts_usuario (user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Conta de demonstração exigida para avaliação local (usuário: admin / senha: 123).
 -- Remova ou altere esta conta antes de disponibilizar o sistema fora do ambiente acadêmico.
 INSERT IGNORE INTO usuarios (usuario, senha)

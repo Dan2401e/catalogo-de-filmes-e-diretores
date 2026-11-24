@@ -1,0 +1,17 @@
+{
+  "name": "dan2401e/cinecatalog",
+  "description": "CineCatalog PHP application",
+  "type": "project",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "firebase/php-jwt": "^6.11",
+    "jumbojett/openid-connect-php": "^1.0"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

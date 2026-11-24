@@ -188,6 +188,14 @@ tbody tr:last-child td { border-bottom:0; }
 .login-help a:hover { color:white; text-decoration:underline; }
 .login-card form small { margin-top:-7px; font-size:.75rem; }
 .login-card form input { margin-bottom:4px; }
+.oauth-divider { display:flex; align-items:center; gap:12px; margin:24px 0 15px; color:var(--muted); font-size:.78rem; }
+.oauth-divider::before,.oauth-divider::after { content:''; flex:1; height:1px; background:var(--line); }
+.oauth-buttons { display:grid; gap:9px; }
+.oauth-button { display:flex; align-items:center; justify-content:center; gap:11px; min-height:46px; padding:9px 14px; border:1px solid var(--line); border-radius:11px; color:var(--text); background:rgba(255,255,255,.025); font-size:.9rem; font-weight:750; transition:border-color .18s,background .18s; }
+.oauth-button:hover { border-color:#4779c3; background:var(--primary-soft); }
+.oauth-mark { display:grid; place-items:center; width:24px; height:24px; border-radius:7px; color:#a9c8ff; background:var(--primary-soft); font-size:.77rem; font-weight:850; }
+.oauth-note { margin:0; color:var(--muted); font-size:.78rem; line-height:1.55; text-align:center; }
+.oauth-note code { color:#b9d1ff; }
 .password-field { position:relative; }
 .login-card form .password-field input { padding-right:88px; }
 .password-toggle { position:absolute; top:50%; right:8px; padding:6px 9px; transform:translateY(-50%); border:1px solid var(--line); border-radius:7px; color:#b7ccff; background:var(--surface-raised); font-size:.75rem; font-weight:750; cursor:pointer; }
@@ -287,7 +295,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline:2px solid
 .tmdb-card-body h3 a:hover { color:#9bc0ff; }
 .tmdb-card-body p { margin:0 0 12px; font-size:.82rem; }
 .tmdb-rating { color:#70a5ff; font-size:.78rem; font-weight:800; }
-.tmdb-filter-form { grid-template-columns:minmax(260px,2fr) minmax(180px,1fr) minmax(180px,1fr) auto; }
+.tmdb-filter-form { grid-template-columns:minmax(220px,2fr) repeat(3,minmax(145px,1fr)) auto; }
 .filter-hint { margin:12px 0 0; color:var(--muted); font-size:.82rem; }
 .pagination { display:flex; justify-content:center; align-items:center; gap:14px; margin:24px 0; color:var(--muted); }
 .details-backdrop {

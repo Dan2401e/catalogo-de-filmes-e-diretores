@@ -7,15 +7,18 @@ if (session_status() === PHP_SESSION_NONE) {
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     ini_set('session.cookie_httponly', '1');
-    ini_set('session.cookie_samesite', 'Lax');
-
     $httpsAtivo = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+    $appleOauthRequest = in_array(basename($_SERVER['SCRIPT_NAME'] ?? ''), ['oauth-start.php', 'oauth-callback.php'], true)
+        && ($_GET['provider'] ?? '') === 'apple';
+    $sameSite = $appleOauthRequest && $httpsAtivo ? 'None' : 'Lax';
+    ini_set('session.cookie_samesite', $sameSite);
+
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
         'secure' => $httpsAtivo,
         'httponly' => true,
-        'samesite' => 'Lax',
+        'samesite' => $sameSite,
     ]);
 
     session_start();

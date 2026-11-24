@@ -3,6 +3,7 @@
 .env.*
 !.env.example
 config/local.php
+vendor/
 
 # Imagens enviadas pelos usuários (mantém apenas os arquivos de estrutura)
 uploads/diretores/*
