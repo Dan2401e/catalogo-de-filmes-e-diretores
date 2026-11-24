@@ -4,7 +4,7 @@
 return [
     'host' => '127.0.0.1',
     'usuario' => 'root',
-    'senha' => '',
+    'senha' => 'Senai@118',
     'banco' => 'catalogo_filmes',
     'porta' => 3306,
 ];
