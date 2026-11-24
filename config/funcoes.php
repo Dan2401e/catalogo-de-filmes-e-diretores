@@ -201,6 +201,27 @@ function imagem_url(?string $caminho): string {
     return $caminho ? url('uploads/' . $caminho) : url('assets/img/sem-imagem.svg');
 }
 
+// Cria o cliente TMDB usando somente configuração local ou variável de ambiente.
+function tmdb_client(): TmdbClient {
+    static $cliente = null;
+    if ($cliente instanceof TmdbClient) return $cliente;
+
+    $arquivoLocal = __DIR__ . '/local.php';
+    $local = is_file($arquivoLocal) ? require $arquivoLocal : [];
+    if (!is_array($local)) $local = [];
+    $token = getenv('CINECATALOG_TMDB_TOKEN');
+    if (!is_string($token) || trim($token) === '') {
+        $token = (string) ($local['tmdb_token'] ?? '');
+    }
+    require_once __DIR__ . '/tmdb.php';
+    $caBundle = getenv('CINECATALOG_CA_BUNDLE');
+    if (!is_string($caBundle) || trim($caBundle) === '') {
+        $caBundle = (string) ($local['ca_bundle'] ?? '');
+    }
+    $cliente = new TmdbClient((string) $token, (string) $caBundle);
+    return $cliente;
+}
+
 // Valida se o trailer é um link do YouTube.
 function validar_link(?string $link): ?string {
     $link = trim((string) $link);

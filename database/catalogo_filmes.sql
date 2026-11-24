@@ -39,6 +39,29 @@ CREATE TABLE IF NOT EXISTS filmes (
   INDEX idx_filmes_genero_ano (genero, ano)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE IF NOT EXISTS favoritos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  tmdb_movie_id INT NOT NULL,
+  titulo VARCHAR(150) NOT NULL,
+  poster_path VARCHAR(255) DEFAULT NULL,
+  ano SMALLINT DEFAULT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT uq_favoritos_usuario_filme UNIQUE (usuario_id, tmdb_movie_id),
+  CONSTRAINT fk_favoritos_usuario
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+  INDEX idx_favoritos_usuario (usuario_id),
+  INDEX idx_favoritos_filme (tmdb_movie_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS tmdb_cache (
+  cache_key VARCHAR(191) PRIMARY KEY,
+  conteudo MEDIUMTEXT NOT NULL,
+  expira_em DATETIME NOT NULL,
+  atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_tmdb_cache_expira (expira_em)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Conta de demonstração exigida para avaliação local (usuário: admin / senha: 123).
 -- Remova ou altere esta conta antes de disponibilizar o sistema fora do ambiente acadêmico.

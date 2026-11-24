@@ -36,6 +36,16 @@ if ($documentRoot !== false && $applicationRoot !== false) {
 }
 
 $basePath = trim(str_replace('\\', '/', $basePath), '/');
+
+// Quando o projeto é publicado por um alias ou junction fora do DocumentRoot,
+// considera o nome da pasta na URL como base da aplicação.
+if ($basePath === '') {
+    $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+    $applicationName = basename(str_replace('\\', '/', $applicationRoot ?: dirname(__DIR__)));
+    if ($applicationName !== '' && preg_match('~(?:^|/)' . preg_quote($applicationName, '~') . '(?:/|$)~i', $scriptName)) {
+        $basePath = $applicationName;
+    }
+}
 define('BASE_URL', $basePath === '' ? '/' : '/' . $basePath . '/');
 define('UPLOAD_DIR', dirname(__DIR__) . '/uploads/');
 

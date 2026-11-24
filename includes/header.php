@@ -33,10 +33,8 @@ $navAtiva = static function (string $trecho) use ($caminhoAtual): string {
         </button>
 
         <nav id="primary-navigation" aria-label="Navegação principal">
-            <a class="<?= e($navAtiva('/index.php') && !str_contains($caminhoAtual, '/diretores/') && !str_contains($caminhoAtual, '/filmes/') && !str_contains($caminhoAtual, '/biblioteca/') ? 'active' : '') ?>" href="<?= e(url('index.php')) ?>">Início</a>
-            <a class="<?= e($navAtiva('/diretores/')) ?>" href="<?= e(url('diretores/index.php')) ?>">Diretores</a>
-            <a class="<?= e($navAtiva('/filmes/')) ?>" href="<?= e(url('filmes/index.php')) ?>">Filmes</a>
-            <a class="<?= e($navAtiva('/biblioteca/')) ?>" href="<?= e(url('biblioteca/index.php')) ?>">Biblioteca</a>
+            <a class="<?= e($navAtiva('/biblioteca-tmdb.php')) ?>" href="<?= e(url('biblioteca-tmdb.php')) ?>">Explorar</a>
+            <a class="<?= e($navAtiva('/meus-favoritos.php')) ?>" href="<?= e(url('meus-favoritos.php')) ?>">Favoritos</a>
         </nav>
 
         <div class="user-area">

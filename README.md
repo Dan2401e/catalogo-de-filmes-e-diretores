@@ -6,6 +6,20 @@ Aplicação web acadêmica do Grupo 1 do curso Técnico em Desenvolvimento de Si
 **Tecnologias:** HTML5, CSS3 puro, PHP 8.1+, MySQL 8+, `mysqli`, JavaScript e GD.  
 **Repositório:** https://github.com/Dan2401e/catalogo-de-filmes-e-diretores
 
+## Integração TMDB
+
+O CineCatalog consulta o TMDB para popularidades, lançamentos, melhores avaliações, descoberta, pesquisa, detalhes, elenco, diretores e trailers.
+
+A página inicial redireciona diretamente para a descoberta TMDB. Os módulos de cadastro local continuam disponíveis para atendimento aos requisitos acadêmicos de CRUD, mas não são mais a experiência principal.
+
+1. Crie um token Read Access Token no painel do TMDB.
+2. Configure `CINECATALOG_TMDB_TOKEN` no ambiente ou adicione o valor em `config/local.php` no campo `tmdb_token`.
+3. O token nunca é enviado ao HTML ou JavaScript.
+4. As respostas são armazenadas em `tmdb_cache` por seis horas.
+5. Cada usuário possui favoritos individuais em `favoritos`.
+
+**Atribuição obrigatória:** "This product uses the TMDB API but is not endorsed or certified by TMDB."
+
 ## Funcionalidades
 
 - Cadastro de usuários com senha armazenada por `password_hash()` e login com `password_verify()`; conta de demonstração local `admin` / `123` para avaliação.
