@@ -1,0 +1,16 @@
+# Configurações locais e credenciais
+.env
+.env.*
+!.env.example
+config/local.php
+
+# Imagens enviadas pelos usuários (mantém apenas os arquivos de estrutura)
+uploads/diretores/*
+!uploads/diretores/.gitkeep
+uploads/filmes/*
+!uploads/filmes/.gitkeep
+
+# Arquivos temporários do sistema operacional/editor
+.DS_Store
+Thumbs.db
+*.log
